@@ -5,6 +5,6 @@ if [ -z "$JOB_ID" ]; then
   echo "build failed"
   exit 1
 else 
-        curl -k --output ng-directory-service.deb --location --header "PRIVATE-TOKEN: $MY_TOKEN" "https://gitlab-my.ru/api/v4/projects/$CI_PROJECT_ID/jobs/$JOB_ID/artifacts/my_art.art"
+        curl -k --output my_art.art --location --header "PRIVATE-TOKEN: $MY_TOKEN" "https://gitlab-my.ru/api/v4/projects/$CI_PROJECT_ID/jobs/$JOB_ID/artifacts/my_art.art"
 fi
 exit 0
