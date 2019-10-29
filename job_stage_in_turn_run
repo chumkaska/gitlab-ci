@@ -5,23 +5,23 @@ stages:
 test_or_config1:
   stage: test_or_config
   script:
-   - set -e
-	 - echo "test1"  
-	 - 'JOB_ID=$(curl -k --location --header "PRIVATE-TOKEN: $MY_TOKEN" "https://gitlab-my.ru/api/v4/projects/$CI_PROJECT_ID/repository/commits/$CI_COMMIT_SHA/statuses" | jq '.[] | select(.name == "test_or_config2") | .id')'
-	 - 'curl --request POST --header "PRIVATE-TOKEN: $MY_TOKEN" "https://gitlab-my.ru/api/v4/projects/$CI_PROJECT_ID/jobs/$JOB_ID/play"'
+    - set -e
+    - echo "test1"  
+    - 'JOB_ID=$(curl -k --location --header "PRIVATE-TOKEN: $MY_TOKEN" "https://gitlab-my.ru/api/v4/projects/$CI_PROJECT_ID/repository/commits/$CI_COMMIT_SHA/statuses" | jq '.[] | select(.name == "test_or_config2") | .id')'
+    - 'curl --request POST --header "PRIVATE-TOKEN: $MY_TOKEN" "https://gitlab-my.ru/api/v4/projects/$CI_PROJECT_ID/jobs/$JOB_ID/play"'
 test_or_config2:
   stage: test_or_config
   script:
     - set -e
-	  - echo "test1" 
-	  - 'JOB_ID=$(curl -k --location --header "PRIVATE-TOKEN: $MY_TOKEN" "https://gitlab-my.ru/api/v4/projects/$CI_PROJECT_ID/repository/commits/$CI_COMMIT_SHA/statuses" | jq '.[] | select(.name == "test_or_config3") | .id')'
-	  - 'curl --request POST --header "PRIVATE-TOKEN: $MY_TOKEN" "https://gitlab-my.ru/api/v4/projects/$CI_PROJECT_ID/jobs/$JOB_ID/play"'
+    - echo "test1" 
+    - 'JOB_ID=$(curl -k --location --header "PRIVATE-TOKEN: $MY_TOKEN" "https://gitlab-my.ru/api/v4/projects/$CI_PROJECT_ID/repository/commits/$CI_COMMIT_SHA/statuses" | jq '.[] | select(.name == "test_or_config3") | .id')'
+    - 'curl --request POST --header "PRIVATE-TOKEN: $MY_TOKEN" "https://gitlab-my.ru/api/v4/projects/$CI_PROJECT_ID/jobs/$JOB_ID/play"'
   when: manual
 test_or_config3:
   stage: test_or_config
   script:
     - set -e
-	  - echo "test1" 
+    - echo "test1" 
   when: manual
 deploy:
   stage: deploy
